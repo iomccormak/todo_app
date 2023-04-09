@@ -7,16 +7,11 @@ import 'package:todo_app/domain/models/sorts.dart';
 import 'package:todo_app/utils/app_colors.dart';
 import 'package:todo_app/utils/app_icons.dart';
 
-class BottomBarButtons extends StatefulWidget {
+class BottomBarButtons extends StatelessWidget {
   const BottomBarButtons({super.key, required this.sortType});
 
   final Sort sortType;
 
-  @override
-  State<BottomBarButtons> createState() => _BottomBarButtonsState();
-}
-
-class _BottomBarButtonsState extends State<BottomBarButtons> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TasksBloc, TasksState>(
@@ -42,7 +37,7 @@ class _BottomBarButtonsState extends State<BottomBarButtons> {
                     right: 290.w,
                     top: 9.h,
                   ),
-                  child: widget.sortType != Sort.descendingSort
+                  child: sortType != Sort.descendingSort
                       ? SvgPicture.asset(AppIcons.alphabetDescending)
                       : SvgPicture.asset(AppIcons.blueAlphabetDescending),
                 ),
@@ -61,7 +56,7 @@ class _BottomBarButtonsState extends State<BottomBarButtons> {
                     right: 167.w,
                     top: 9.h,
                   ),
-                  child: widget.sortType != Sort.ascendingSort
+                  child: sortType != Sort.ascendingSort
                       ? SvgPicture.asset(AppIcons.alphabetAscending)
                       : SvgPicture.asset(AppIcons.blueAlphabetAscending),
                 ),
@@ -80,7 +75,7 @@ class _BottomBarButtonsState extends State<BottomBarButtons> {
                     left: 290.w,
                     top: 9.h,
                   ),
-                  child: widget.sortType != Sort.dateSort
+                  child: sortType != Sort.dateSort
                       ? SvgPicture.asset(AppIcons.arrowAscending)
                       : SvgPicture.asset(AppIcons.blueArrowAscending),
                 ),

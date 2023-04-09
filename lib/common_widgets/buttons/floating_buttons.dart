@@ -5,14 +5,9 @@ import 'package:todo_app/pages/add_task/add_task_page.dart';
 import 'package:todo_app/pages/info/info_page.dart';
 import 'package:todo_app/utils/app_icons.dart';
 
-class FloatingButtons extends StatefulWidget {
+class FloatingButtons extends StatelessWidget {
   const FloatingButtons({super.key});
 
-  @override
-  State<FloatingButtons> createState() => _FloatingButtonsState();
-}
-
-class _FloatingButtonsState extends State<FloatingButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
