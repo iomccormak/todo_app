@@ -55,7 +55,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       SizedBox(width: 19.w),
                       Container(
                         width: 241.w,
-                        height: 30.h,
+                        height: 28.5.h,
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/domain/bloc/tasks_bloc.dart';
-import 'package:todo_app/pages/home/empty_page.dart';
+import 'package:todo_app/domain/models/sorts.dart';
+import 'package:todo_app/pages/start/start_page.dart';
 import 'package:todo_app/utils/app_colors.dart';
 import 'package:todo_app/utils/app_text_styles.dart';
 import 'package:todo_app/common_widgets/buttons/bottom_bar_buttons.dart';
@@ -37,10 +38,15 @@ class HomePage extends StatelessWidget {
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          left: 261.w, right: 14.w, top: 74.07.h),
+                        left: 261.w,
+                        right: 14.w,
+                        top: 74.07.h,
+                      ),
                       child: GestureDetector(
                         child: Text(
-                          'Hide completed',
+                          state.filterStatus
+                              ? 'Hide completed'
+                              : 'Show completed',
                           style: AppTextStyles.blueTextStyle,
                         ),
                         onTap: () {
@@ -63,21 +69,31 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                     ),
+                    BottomBarButtons(sortType: state.sortType)
                   ],
                 );
               } else if (state is TasksEmptyState) {
-                return const EmptyPage();
+                return Stack(
+                  children: const [
+                    StartPage(),
+                    BottomBarButtons(sortType: Sort.descendingSort),
+                  ],
+                );
               } else {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.indigo,
-                  ),
+                return Stack(
+                  children: const [
+                    Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.indigo,
+                      ),
+                    ),
+                    BottomBarButtons(sortType: Sort.descendingSort),
+                  ],
                 );
               }
             },
           ),
           const FloatingButtons(),
-          const BottomBarButtons(),
         ],
       ),
     );

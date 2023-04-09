@@ -1,8 +1,6 @@
 part of 'tasks_bloc.dart';
 
-abstract class TasksState {
-  const TasksState();
-}
+abstract class TasksState {}
 
 class TasksInitial extends TasksState {}
 
@@ -10,6 +8,12 @@ class TasksEmptyState extends TasksState {}
 
 class GetTasksState extends TasksState {
   final List<Task> tasks;
+  final bool filterStatus;
+  final Sort sortType;
 
-  const GetTasksState({required this.tasks});
+  GetTasksState({
+    required this.tasks,
+    required this.filterStatus,
+    required this.sortType,
+  });
 }

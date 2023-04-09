@@ -8,99 +8,94 @@ import 'package:todo_app/utils/app_colors.dart';
 import 'package:todo_app/utils/app_icons.dart';
 
 class BottomBarButtons extends StatefulWidget {
-  const BottomBarButtons({super.key});
+  const BottomBarButtons({super.key, required this.sortType});
+
+  final Sort sortType;
 
   @override
   State<BottomBarButtons> createState() => _BottomBarButtonsState();
 }
 
 class _BottomBarButtonsState extends State<BottomBarButtons> {
-  List<bool> _state = [true, false, false];
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 740.h),
-      height: 72.h,
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: AppColors.lightGrey,
-            width: 1.w,
-          ),
-        ),
-        color: AppColors.tabBarBackground,
-      ),
-      child: Stack(
-        children: [
-          GestureDetector(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 45.w,
-                right: 290.w,
-                top: 9.h,
+    return BlocBuilder<TasksBloc, TasksState>(
+      builder: (context, state) {
+        return Container(
+          margin: EdgeInsets.only(top: 740.h),
+          height: 72.h,
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: AppColors.lightGrey,
+                width: 1.w,
               ),
-              child: !_state[0]
-                  ? SvgPicture.asset(AppIcons.alphabetDescending)
-                  : SvgPicture.asset(AppIcons.blueAlphabetDescending),
             ),
-            onTap: () {
-              setState(() {
-                _state = [true, false, false];
-              });
-              context.read<TasksBloc>().add(
-                    const SortByType(
-                      sortType: Sort.descendingSort,
-                    ),
-                  );
-            },
+            color: AppColors.tabBarBackground,
           ),
-          GestureDetector(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 167.w,
-                right: 167.w,
-                top: 9.h,
+          child: Stack(
+            children: [
+              GestureDetector(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 45.w,
+                    right: 290.w,
+                    top: 9.h,
+                  ),
+                  child: widget.sortType != Sort.descendingSort
+                      ? SvgPicture.asset(AppIcons.alphabetDescending)
+                      : SvgPicture.asset(AppIcons.blueAlphabetDescending),
+                ),
+                onTap: () {
+                  context.read<TasksBloc>().add(
+                        const SortByType(
+                          sortType: Sort.descendingSort,
+                        ),
+                      );
+                },
               ),
-              child: !_state[1]
-                  ? SvgPicture.asset(AppIcons.alphabetAscending)
-                  : SvgPicture.asset(AppIcons.blueAlphabetAscending),
-            ),
-            onTap: () {
-              setState(() {
-                _state = [false, true, false];
-              });
-              context.read<TasksBloc>().add(
-                    const SortByType(
-                      sortType: Sort.ascendingSort,
-                    ),
-                  );
-            },
-          ),
-          GestureDetector(
-            child: Padding(
-              padding: EdgeInsets.only(
-                right: 45.w,
-                left: 290.w,
-                top: 9.h,
+              GestureDetector(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 167.w,
+                    right: 167.w,
+                    top: 9.h,
+                  ),
+                  child: widget.sortType != Sort.ascendingSort
+                      ? SvgPicture.asset(AppIcons.alphabetAscending)
+                      : SvgPicture.asset(AppIcons.blueAlphabetAscending),
+                ),
+                onTap: () {
+                  context.read<TasksBloc>().add(
+                        const SortByType(
+                          sortType: Sort.ascendingSort,
+                        ),
+                      );
+                },
               ),
-              child: !_state[2]
-                  ? SvgPicture.asset(AppIcons.arrowAscending)
-                  : SvgPicture.asset(AppIcons.blueArrowAscending),
-            ),
-            onTap: () {
-              setState(() {
-                _state = [false, false, true];
-              });
-              context.read<TasksBloc>().add(
-                    const SortByType(
-                      sortType: Sort.dateSort,
-                    ),
-                  );
-            },
+              GestureDetector(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    right: 45.w,
+                    left: 290.w,
+                    top: 9.h,
+                  ),
+                  child: widget.sortType != Sort.dateSort
+                      ? SvgPicture.asset(AppIcons.arrowAscending)
+                      : SvgPicture.asset(AppIcons.blueArrowAscending),
+                ),
+                onTap: () {
+                  context.read<TasksBloc>().add(
+                        const SortByType(
+                          sortType: Sort.dateSort,
+                        ),
+                      );
+                },
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

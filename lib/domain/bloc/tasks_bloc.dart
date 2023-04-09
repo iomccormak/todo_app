@@ -27,17 +27,18 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   Future<void> _onGetTasks(GetTasks event, Emitter<TasksState> emit) async {
     _doneTasks = await repository.getDoneTasks();
     _undoneTasks = await repository.getUndoneTasks();
-
-    _doneTasks.isEmpty && _undoneTasks.isEmpty
-        ? emit(TasksEmptyState())
-        : emit(GetTasksState(tasks: _hideFilter()));
+    _showAll(emit);
   }
 
   Future<void> _onAddTask(AddTask event, Emitter<TasksState> emit) async {
     _undoneTasks.add(event.task);
     _sort(_sortType, _doneTasks, _undoneTasks);
     repository.addTask(event.task);
-    emit(GetTasksState(tasks: _hideFilter()));
+    emit(GetTasksState(
+      tasks: _hideFilter(),
+      filterStatus: _show,
+      sortType: _sortType,
+    ));
   }
 
   Future<void> _onDoneChange(DoneChange event, Emitter<TasksState> emit) async {
@@ -53,24 +54,32 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       _undoneTasks.removeWhere((t) => t.id == task.id);
     }
     repository.doneChangeTask(event.task.copyWith(isDone: !event.task.isDone));
-
-    _doneTasks.isEmpty && _undoneTasks.isEmpty
-        ? emit(TasksEmptyState())
-        : emit(GetTasksState(tasks: _hideFilter()));
+    _showAll(emit);
   }
 
   Future<void> _onSortByType(SortByType event, Emitter<TasksState> emit) async {
     _sortType = event.sortType;
     _sort(_sortType, _doneTasks, _undoneTasks);
-
-    _doneTasks.isEmpty && _undoneTasks.isEmpty
-        ? emit(TasksEmptyState())
-        : emit(GetTasksState(tasks: _hideFilter()));
+    _showAll(emit);
   }
 
   Future<void> _onFilter(Filter event, Emitter<TasksState> emit) async {
     _show = !_show;
-    emit(GetTasksState(tasks: _hideFilter()));
+    emit(GetTasksState(
+      tasks: _hideFilter(),
+      filterStatus: _show,
+      sortType: _sortType,
+    ));
+  }
+
+  void _showAll(Emitter<TasksState> emit) {
+    _doneTasks.isEmpty && _undoneTasks.isEmpty
+        ? emit(TasksEmptyState())
+        : emit(GetTasksState(
+            tasks: _hideFilter(),
+            filterStatus: _show,
+            sortType: _sortType,
+          ));
   }
 
   List<Task> _hideFilter() {

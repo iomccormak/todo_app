@@ -5,7 +5,16 @@ import 'package:todo_app/domain/bloc/tasks_bloc.dart';
 import 'package:todo_app/data/repository/repository_drift.dart';
 import 'package:todo_app/pages/home/home_page.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -15,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TasksBloc>(
-      create: (BuildContext _) => TasksBloc(
+      create: (context) => TasksBloc(
         repository: DriftTaskRepository(),
       )..add(GetTasks()),
       child: ScreenUtilInit(
