@@ -42,9 +42,7 @@ class StartPage extends StatelessWidget {
           child: SvgPicture.asset(AppIcons.arrow),
         ),
         const FloatingButtons(),
-        const BottomBarButtons(
-          sortType: Sort.descendingSort,
-        ),
+        const BottomBarButtons(sortType: Sort.descendingSort),
       ],
     );
   }

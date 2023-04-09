@@ -1,9 +1,7 @@
-import 'package:bloc/bloc.dart';
-import 'package:todo_app/data/repository/repository_drift.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/domain/models/sorts.dart';
 import 'package:todo_app/domain/models/task.dart';
 import 'package:todo_app/domain/repository/tasks_repository.dart';
-import 'package:todo_app/data/datasource/local/db_drift.dart';
 
 part 'tasks_event.dart';
 part 'tasks_state.dart';

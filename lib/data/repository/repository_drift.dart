@@ -3,7 +3,7 @@ import 'package:todo_app/data/datasource/local/db_drift.dart';
 import 'package:todo_app/domain/models/task.dart';
 import 'package:todo_app/domain/repository/tasks_repository.dart';
 
-class DriftTaskRepository extends TasksRepository {
+class RepositoryDrift extends TasksRepository {
   final repository = MyDb();
 
   @override
