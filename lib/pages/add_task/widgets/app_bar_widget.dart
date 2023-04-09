@@ -21,7 +21,9 @@ class AppBarWidget extends StatelessWidget {
         ),
       ),
       title: Padding(
-        padding: EdgeInsets.only(top: 22.h),
+        padding: EdgeInsets.only(
+          top: 22.h,
+        ),
         child: Text(
           'Task',
           style: AppTextStyles.addTaskTextStyle,
@@ -29,14 +31,20 @@ class AppBarWidget extends StatelessWidget {
       ),
       leadingWidth: 77.w,
       leading: Padding(
-        padding: EdgeInsets.only(top: 23.h),
+        padding: EdgeInsets.only(
+          top: 23.h,
+        ),
         child: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: Row(
             children: [
-              SizedBox(width: 9.w),
+              SizedBox(
+                width: 9.w,
+              ),
               SvgPicture.asset(AppIcons.chevron),
-              SizedBox(width: 5.w),
+              SizedBox(
+                width: 5.w,
+              ),
               Text(
                 'Close',
                 style: AppTextStyles.closeButtonTextStyle,

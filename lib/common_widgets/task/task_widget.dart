@@ -75,7 +75,9 @@ class TaskWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 16.h),
+        SizedBox(
+          height: 16.h,
+        ),
       ],
     );
   }

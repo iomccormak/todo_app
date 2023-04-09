@@ -30,7 +30,9 @@ class HomePage extends StatelessWidget {
               style: AppTextStyles.titleTextStyle,
             ),
           ),
-          SizedBox(height: 41.h),
+          SizedBox(
+            height: 41.h,
+          ),
           BlocBuilder<TasksBloc, TasksState>(
             builder: (context, state) {
               if (state is GetTasksState) {

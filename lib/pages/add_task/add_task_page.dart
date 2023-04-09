@@ -43,7 +43,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 'Add a task',
                 style: AppTextStyles.titleTextStyle,
               ),
-              SizedBox(height: 43.h),
+              SizedBox(
+                height: 43.h,
+              ),
               Column(
                 children: [
                   Row(
@@ -53,7 +55,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         style: AppTextStyles.addTaskTextStyle,
                       ),
                       SizedBox(width: 19.w),
-                      Container(
+                      SizedBox(
                         width: 241.w,
                         height: 28.5.h,
                         child: TextFormField(
@@ -68,14 +70,18 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           style: AppTextStyles.pageTextStyle,
                           decoration: InputDecoration(
                             hintText: 'Lorem ipsum dolor sit amet',
-                            contentPadding: EdgeInsets.only(bottom: 10.h),
+                            contentPadding: EdgeInsets.only(
+                              bottom: 10.h,
+                            ),
                             border: InputBorder.none,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 40.h),
+                  SizedBox(
+                    height: 40.h,
+                  ),
                 ],
               ),
               Column(
@@ -86,7 +92,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         'Time',
                         style: AppTextStyles.addTaskTextStyle,
                       ),
-                      SizedBox(width: 22.w),
+                      SizedBox(
+                        width: 22.w,
+                      ),
                       GestureDetector(
                         child: Container(
                           width: 86.w,
@@ -109,7 +117,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40.h),
+                  SizedBox(
+                    height: 40.h,
+                  ),
                 ],
               ),
               Column(
@@ -120,7 +130,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         'Date',
                         style: AppTextStyles.addTaskTextStyle,
                       ),
-                      SizedBox(width: 24.w),
+                      SizedBox(
+                        width: 24.w,
+                      ),
                       GestureDetector(
                         child: Container(
                           width: 163.w,
@@ -145,7 +157,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 63.h),
+                  SizedBox(
+                    height: 63.h,
+                  ),
                 ],
               ),
               GestureDetector(
