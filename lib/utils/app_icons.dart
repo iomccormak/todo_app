@@ -9,4 +9,8 @@ abstract class AppIcons {
   static const check = "assets/icons/Vector (1).svg";
   static const chevron = "assets/icons/chevron.left.svg";
   static const info2 = "assets/icons/unsplash_yMSecCHsIBc.svg";
+  static const blueArrowAscending = "assets/icons/blue_date.svg";
+  static const blueAlphabetAscending = "assets/icons/blue_descending.svg";
+  static const blueAlphabetDescending =
+      "assets/icons/9069563_alphabetical_sorting_icon 1 (1).svg";
 }

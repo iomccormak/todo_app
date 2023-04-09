@@ -11,19 +11,17 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color.fromRGBO(249, 249, 249, 0.94),
+      backgroundColor: AppColors.tabBarBackground,
       elevation: 0,
       centerTitle: true,
-      shape: Border(
+      shape: const Border(
         bottom: BorderSide(
           color: AppColors.lightGrey,
           width: 0.5,
         ),
       ),
       title: Padding(
-        padding: EdgeInsets.only(
-          top: 22.h,
-        ),
+        padding: EdgeInsets.only(top: 22.h),
         child: Text(
           'Task',
           style: AppTextStyles.addTaskTextStyle,
@@ -31,20 +29,14 @@ class AppBarWidget extends StatelessWidget {
       ),
       leadingWidth: 77.w,
       leading: Padding(
-        padding: EdgeInsets.only(
-          top: 23.h,
-        ),
+        padding: EdgeInsets.only(top: 23.h),
         child: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: Row(
             children: [
-              SizedBox(
-                width: 9.w,
-              ),
+              SizedBox(width: 9.w),
               SvgPicture.asset(AppIcons.chevron),
-              SizedBox(
-                width: 5.w,
-              ),
+              SizedBox(width: 5.w),
               Text(
                 'Close',
                 style: AppTextStyles.closeButtonTextStyle,

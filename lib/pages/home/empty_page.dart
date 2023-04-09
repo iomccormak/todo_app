@@ -14,7 +14,10 @@ class EmptyPage extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 27.w, top: 126.h),
+          margin: EdgeInsets.only(
+            left: 27.w,
+            top: 126.h,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

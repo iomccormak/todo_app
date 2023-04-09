@@ -41,6 +41,7 @@ abstract class AppTextStyles {
     fontSize: 15.sp,
     fontWeight: FontWeight.w600,
     decoration: TextDecoration.lineThrough,
+    decorationThickness: 2,
   );
 
   static final dateTextStyleLined = TextStyle(
@@ -48,6 +49,8 @@ abstract class AppTextStyles {
     fontSize: 13.sp,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.italic,
+    decoration: TextDecoration.lineThrough,
+    decorationThickness: 1.5,
   );
 
   static final dateTimeTextStyle = TextStyle(
